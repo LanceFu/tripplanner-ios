@@ -1,0 +1,28 @@
+# Machine-readable glossary. Sifu's glossary checker flags any term listed under `avoid`.
+terms:
+  - term: Traveller
+    definition: The person using the app to plan a Trip.
+    avoid: [user, customer, tourist]
+  - term: Trip
+    definition: A multi-day plan with a name, a start date and an end date.
+    avoid: [journey, vacation, holiday plan]
+  - term: Day Plan
+    definition: The ordered Stops planned for one calendar day of a Trip.
+    avoid: [schedule, day schedule, daily agenda]
+  - term: Stop
+    definition: One planned visit to a Place within a Day Plan.
+    avoid: [waypoint, activity, POI, point of interest]
+  - term: Place
+    definition: A named location with coordinates that a Stop refers to.
+    avoid: [location, venue, destination]
+  - term: Duration
+    definition: How long a Stop takes, in whole minutes.
+    avoid: [length, time spent]
+  - term: Itinerary
+    definition: The full ordered list of Day Plans for a Trip, as shown or exported.
+    avoid: [agenda, timetable]
+
+out_of_scope:
+  - Booking
+  - Companion
+  - Budget

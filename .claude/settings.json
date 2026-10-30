@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(swift build:*)",
+      "Bash(swift test:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Edit(.github/**)",
+      "Edit(.claude/**)",
+      "Edit(conventions.md)",
+      "Edit(docs/glossary.yaml)",
+      "Edit(Package.swift)",
+      "Read(.env*)",
+      "Bash(git push:*)",
+      "Bash(rm -rf:*)"
+    ]
+  }
+}
