@@ -19,10 +19,20 @@ final class TripTests: XCTestCase {
         }
     }
 
-    func testRejectsBlankName() {
-        XCTAssertThrowsError(try Trip(name: "   ", startDate: start, endDate: start)) { error in
-            XCTAssertEqual(error as? TripError, .emptyName)
+    func testRejectsEmptyNameWithNameBlankError() {
+        var trip: Trip?
+        XCTAssertThrowsError(trip = try Trip(name: "", startDate: start, endDate: start)) { error in
+            XCTAssertEqual(error as? TripError, .nameBlank)
         }
+        XCTAssertNil(trip)
+    }
+
+    func testRejectsWhitespaceOnlyNameWithNameBlankError() {
+        var trip: Trip?
+        XCTAssertThrowsError(trip = try Trip(name: " \t\n  ", startDate: start, endDate: start)) { error in
+            XCTAssertEqual(error as? TripError, .nameBlank)
+        }
+        XCTAssertNil(trip)
     }
 
     func testAcceptsSingleDayTrip() throws {
