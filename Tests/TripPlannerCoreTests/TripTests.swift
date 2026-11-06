@@ -57,9 +57,9 @@ final class TripTests: XCTestCase {
     func testTotalDurationSumsEveryDayPlan() throws {
         var trip = try makeTrip()
         var first = DayPlan(date: start)
-        first.add(Stop(place: castle, durationMinutes: 90))
+        try first.add(Stop(place: castle, durationMinutes: 90))
         var second = DayPlan(date: start.addingTimeInterval(oneDay))
-        second.add(Stop(place: castle, durationMinutes: 45))
+        try second.add(Stop(place: castle, durationMinutes: 45))
         try trip.addDay(first)
         try trip.addDay(second)
         XCTAssertEqual(trip.totalDurationMinutes, 135)

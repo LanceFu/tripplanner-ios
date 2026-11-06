@@ -1,5 +1,11 @@
 import Foundation
 
+/// Reasons a Day Plan operation can be rejected.
+public enum DayPlanError: Error, Equatable {
+    /// The Day Plan already holds the maximum number of Stops.
+    case tooManyStops
+}
+
 /// The ordered Stops planned for one calendar day of a Trip.
 public struct DayPlan: Identifiable, Equatable, Sendable {
     public let id: UUID
@@ -17,8 +23,15 @@ public struct DayPlan: Identifiable, Equatable, Sendable {
         stops.reduce(0) { $0 + $1.durationMinutes }
     }
 
+    /// The most Stops a Day Plan can hold.
+    public static let maxStops = 10
+
     /// Appends a Stop to the end of the Day Plan.
-    public mutating func add(_ stop: Stop) {
+    /// Throws `DayPlanError.tooManyStops`, leaving the Day Plan unchanged, if it already holds `maxStops` Stops.
+    public mutating func add(_ stop: Stop) throws {
+        guard stops.count < DayPlan.maxStops else {
+            throw DayPlanError.tooManyStops
+        }
         stops.append(stop)
     }
 }
