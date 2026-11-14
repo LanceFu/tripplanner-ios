@@ -31,3 +31,5 @@ Read this before changing code. The Sifu orchestrator loads it into every agent'
 ## Lessons
 
 <!-- Sifu appends lessons here, through a pull request that a human must approve. -->
+- No force casts (`as!`); use `as?` with a guard that throws a case of the typed Error enum.
+- Change only the files the spec lists, plus tests under Tests/; ask before touching anything else.
